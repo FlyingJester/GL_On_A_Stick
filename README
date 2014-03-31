@@ -1,0 +1,10 @@
+GL On A Stick Demo
+==================
+
+GLoas is a demonstration of threaded OpenGL rendering.
+
+It uses SDL2. Sorry, it just does. This is actually helps to prove the point, since GL Context creation is more restricted in SDL2 than in wgl, glx, and cgl.
+
+GLoas demonstrates asynchronous GL data writing, queueing of GL commands, use of GL share lists (lite, we do this through SDL2), and sharing of windows between threads.
+
+GLoas is released under the BSD 3-Clause license.
