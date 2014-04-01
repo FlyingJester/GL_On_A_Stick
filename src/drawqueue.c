@@ -1,7 +1,9 @@
 #include "drawqueue.h"
 #include "glextra/glExtra.h"
 #include <assert.h>
+#include <stdlib.h>
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_thread.h>
 #include <SDL2/SDL_opengl.h>
 
 /////
@@ -17,7 +19,7 @@ SDL_GLContext threadglcontext;
 
 typedef struct {
 
-  void(*func)(void *);
+  int(*func)(void *);
   void *data;
 
   void *next; //Moves toward LastItem

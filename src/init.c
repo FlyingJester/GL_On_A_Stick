@@ -12,7 +12,7 @@ static const int FrameFloat = 16; //Let the engine get up to 16 frames ahead of 
 
 const char * const WindowTitleBase = "GL On A Stick Demo - Frame Float: ";
 
-char WindowTitle[64];
+char WindowTitle[256];
 
 int Main(int argc, char *argv[]){
 
@@ -92,7 +92,7 @@ int Main(int argc, char *argv[]){
       assert(diff>=0);
 
       if(GetEngineFrame()%32){
-        sprintf(WindowTitle, "%s%i - %i/%i", WindowTitleBase, diff, GetRenderFrame(), GetEngineFrame());
+        sprintf(WindowTitle, "%s%-4i\t - %-8i\t / %-8i", WindowTitleBase, diff, GetRenderFrame(), GetEngineFrame());
       }
 
       SDL_SetWindowTitle(screen, WindowTitle);
