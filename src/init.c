@@ -1,5 +1,10 @@
 #include <stdlib.h>
+#include <stdio.h>
+#ifdef _WIN32
 #include "glextra/glExtra.h"
+#else
+#include <GL/gl.h>
+#endif
 #include "mouse.h"
 #include "makewindow.h"
 #include "drawcommand.h"
@@ -26,8 +31,9 @@ int Main(int argc, char *argv[]){
   SDL_Init(SDL_INIT_VIDEO);
   {
     void **view = MakeWindow(800, 450);
+    #ifdef _WIN32
     LoadGLFunctions();
-
+    #endif
     screen = view[0];
   }
   glEnableClientState(GL_COLOR_ARRAY);
@@ -110,3 +116,7 @@ int Main(int argc, char *argv[]){
 
   return EXIT_SUCCESS;
 }
+
+#ifdef __GNUC__
+int main(int argc, char *argv[]) __attribute__ ((weak, alias ("Main")));
+#endif

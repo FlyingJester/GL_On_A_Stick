@@ -1,5 +1,7 @@
 #include "drawqueue.h"
+#ifdef _WIN32
 #include "glextra/glExtra.h"
+#endif
 #include <assert.h>
 #include <stdlib.h>
 #include <SDL2/SDL.h>
@@ -59,7 +61,9 @@ int RenderThread(void *data){
   if(SDL_GL_MakeCurrent(window, *((SDL_GLContext*)context))!=0)
     SDL_ShowSimpleMessageBox(0, "Error", SDL_GetError(), NULL);
 
-  LoadGLFunctions();
+    #ifdef _WIN32
+    LoadGLFunctions();
+    #endif
 
   SDL_GetWindowSize(window, &width, &height);
   /////

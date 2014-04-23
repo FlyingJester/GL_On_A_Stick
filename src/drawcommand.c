@@ -1,4 +1,8 @@
+#ifdef _WIN32
 #include "glextra/glExtra.h"
+#else
+#include <GL/gl.h>
+#endif
 #include "drawcommand.h"
 #include "drawqueue.h"
 #include <assert.h>

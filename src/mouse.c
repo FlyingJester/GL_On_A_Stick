@@ -11,11 +11,12 @@ static int MY = 0;
 static GLuint dest;
 static GLsizei destoff;
 
+typedef int (*cb)(void *);
 
 void QueueUpdateMousePosition(int x, int y){
   int *dims = malloc(16);
   dims[0] = x; dims[1] = y;
-  PushFunction(UpdateMousePosition, dims);
+  PushFunction((cb)UpdateMousePosition, dims);
 }
 
 int UpdateMousePosition(int *dims){
